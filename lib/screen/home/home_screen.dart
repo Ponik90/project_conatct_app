@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         length: 4,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text("data"),
+            title: const Text("Contact",style: TextStyle(fontSize: 18),),
             actions: [
               Switch(
                 value: providerW!.isAndroid,
@@ -39,9 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
             bottom: const TabBar(
-
               tabs: [
-
                 Tab(
                   icon: Icon(Icons.person_add_alt),
                 ),

@@ -5,8 +5,9 @@ class ContactProvider with ChangeNotifier {
   List<ContactModal> contactList = [];
 
   String image = "";
-  DateTime date = DateTime.now();
-  TimeOfDay time = TimeOfDay.now();
+  DateTime? date = DateTime.now();
+  DateTime? iosTime = DateTime.now();
+  TimeOfDay? time = TimeOfDay.now();
 
   void getImage(String path) {
     image = path;
@@ -18,9 +19,21 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void selectedIosTime(DateTime time) {
+    iosTime = time;
+    notifyListeners();
+  }
+
   void selectedTime(TimeOfDay time )
   {
     this.time = time;
+    notifyListeners();
+  }
+
+  void addContact(ContactModal data)
+  {
+    contactList.add(data);
+    
     notifyListeners();
   }
 }

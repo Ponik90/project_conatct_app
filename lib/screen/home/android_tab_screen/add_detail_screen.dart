@@ -74,6 +74,7 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                   }
                   return null;
                 },
+                controller: txtName,
               ),
               const SizedBox(
                 height: 20,
@@ -90,6 +91,7 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                   }
                   return null;
                 },
+                controller: txtPhone,
               ),
               const SizedBox(
                 height: 20,
@@ -106,6 +108,7 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                   }
                   return null;
                 },
+                controller: txtChat,
               ),
               const SizedBox(
                 height: 20,
@@ -122,7 +125,7 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                   }
                 },
                 label: Text(
-                    "${providerR!.date.day}-${providerR!.date.month}-${providerR!.date.year}"),
+                    "${providerR!.date!.day}-${providerR!.date!.month}-${providerR!.date!.year}"),
                 icon: const Icon(Icons.calendar_month),
               ),
               TextButton.icon(
@@ -135,9 +138,10 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                   if (t1 != null) {
                     providerR!.selectedTime(t1);
                   }
+
                 },
                 label:
-                    Text("${providerW!.time.hour}:${providerW!.time.minute}"),
+                    Text("${providerW!.time!.hour}:${providerW!.time!.minute}"),
                 icon: const Icon(Icons.watch_later_outlined),
               ),
               Center(
@@ -155,7 +159,9 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                         time: providerW!.time,
                       );
 
-                      providerW!.contactList.add(data);
+                      providerR!.addContact(data);
+                      formkey.currentState!.reset();
+
                     }
                   },
                 ),
