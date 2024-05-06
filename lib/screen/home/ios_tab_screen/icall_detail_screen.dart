@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:platform_change_contact/screen/provider/contact_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/global_provider.dart';
 
@@ -50,6 +51,14 @@ class _ICallDetailScreenState extends State<ICallDetailScreen> {
                   ),
             title: Text("${providerW!.contactList[index].name}"),
             subtitle: Text("${providerW!.contactList[index].phone}"),
+            trailing: CupertinoButton(
+              child: const Icon(CupertinoIcons.phone),
+              onPressed: () {
+                launchUrl(
+                  Uri.parse("tel:+91 ${providerW!.contactList[index].phone!}"),
+                );
+              },
+            ),
           );
         },
       ),

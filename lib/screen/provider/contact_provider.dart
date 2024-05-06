@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:platform_change_contact/screen/model/contact_modal.dart';
 
@@ -34,6 +36,13 @@ class ContactProvider with ChangeNotifier {
   {
     contactList.add(data);
     
+    notifyListeners();
+  }
+
+  void deleteContact(index)
+  {
+    contactList.removeAt(index);
+
     notifyListeners();
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:platform_change_contact/screen/provider/contact_provider.dart';
 import 'package:platform_change_contact/utils/change_theme.dart';
 import 'package:platform_change_contact/utils/global_provider.dart';
+import 'package:platform_change_contact/utils/ios_theme.dart';
 import 'package:platform_change_contact/utils/screen_routes.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +38,7 @@ void main() {
               : CupertinoApp(
                   routes: iosScreen,
                   debugShowCheckedModeBanner: false,
-                  theme: CupertinoThemeData(),
+                  theme:value.isTheme?lightThemeIos:darkThemeIos,
                 );
         },
       ),

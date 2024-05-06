@@ -27,19 +27,18 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    providerR=context.read<ContactProvider>();
-    providerW=context.watch<ContactProvider>();
+    providerR = context.read<ContactProvider>();
+    providerW = context.watch<ContactProvider>();
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: const Text("Contact"),
         trailing: Consumer<GlobalProvider>(
-          builder: (context, value, child) =>
-              CupertinoSwitch(
-                onChanged: (value) {
-                  context.read<GlobalProvider>().selectedPlatform();
-                },
-                value: value.isAndroid,
-              ),
+          builder: (context, value, child) => CupertinoSwitch(
+            onChanged: (value) {
+              context.read<GlobalProvider>().selectedPlatform();
+            },
+            value: value.isAndroid,
+          ),
         ),
       ),
       child: SingleChildScrollView(
@@ -61,21 +60,21 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
                     onTap: () async {
                       ImagePicker picker = ImagePicker();
                       XFile? image =
-                      await picker.pickImage(source: ImageSource.gallery);
+                          await picker.pickImage(source: ImageSource.gallery);
                       path = image!.path;
                       providerR!.getImage(image.path);
                     },
                     child: path.isEmpty
                         ? const CircleAvatar(
-                      radius: 50,
-                      child: Icon(Icons.linked_camera_outlined),
-                    )
+                            radius: 50,
+                            child: Icon(Icons.linked_camera_outlined),
+                          )
                         : CircleAvatar(
-                      radius: 50,
-                      backgroundImage: FileImage(
-                        File(path),
-                      ),
-                    ),
+                            radius: 50,
+                            backgroundImage: FileImage(
+                              File(path),
+                            ),
+                          ),
                   ),
                 ),
                 const SizedBox(
@@ -169,8 +168,7 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
                       },
                     ),
                     Text(
-                        "${providerW!.date!.day}/${providerW!.date!
-                            .month}/${providerW!.date!.year}"),
+                        "${providerW!.date!.day}/${providerW!.date!.month}/${providerW!.date!.year}"),
                   ],
                 ),
                 Row(
@@ -196,8 +194,7 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
                       },
                     ),
                     Text(
-                        "${providerW!.iosTime!.hour}:${providerW!.iosTime!
-                            .minute}"),
+                        "${providerW!.iosTime!.hour}:${providerW!.iosTime!.minute}"),
                   ],
                 ),
                 const SizedBox(
@@ -210,16 +207,14 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
                       FocusManager.instance.primaryFocus!.unfocus();
                       if (formkey.currentState!.validate()) {
                         ContactModal data = ContactModal(
-                          image: path,
-                          name: txtName.text,
-                          phone: txtPhone.text,
-                          chat: txtChat.text,
-                          date: providerW!.date,
-                          iosTime: providerW!.iosTime
-                        );
+                            image: path,
+                            name: txtName.text,
+                            phone: txtPhone.text,
+                            chat: txtChat.text,
+                            date: providerW!.date,
+                            iosTime: providerW!.iosTime);
 
                         providerR?.addContact(data);
-
                       }
                     },
                   ),

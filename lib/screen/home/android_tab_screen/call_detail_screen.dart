@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../provider/contact_provider.dart';
 
@@ -31,6 +32,9 @@ class _CallDetailScreenState extends State<CallDetailScreen> {
                 ),
           title: Text("${value.contactList[index].name}"),
           subtitle: Text("${value.contactList[index].phone}"),
+          trailing: IconButton(onPressed:(){
+            launchUrl(Uri.parse("tel: +91 ${value.contactList[index].phone}"),);
+          } ,icon:const Icon(Icons.phone), ),
         ),
       ),
     );

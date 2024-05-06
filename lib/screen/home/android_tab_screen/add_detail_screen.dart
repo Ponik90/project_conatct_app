@@ -63,6 +63,8 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                 height: 20,
               ),
               TextFormField(
+                keyboardType: TextInputType.name,
+                textInputAction: TextInputAction.next,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.person_outline),
                   border: OutlineInputBorder(),
@@ -70,7 +72,7 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Chat is required";
+                    return "Name is required";
                   }
                   return null;
                 },
@@ -80,6 +82,8 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                 height: 20,
               ),
               TextFormField(
+                keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.next,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone),
                   border: OutlineInputBorder(),
@@ -87,7 +91,9 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Chat is required";
+                    return "Number is required";
+                  } else if (value.length != 10) {
+                    return "Enter 10 digit";
                   }
                   return null;
                 },
@@ -97,6 +103,8 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                 height: 20,
               ),
               TextFormField(
+                keyboardType: TextInputType.name,
+                textInputAction: TextInputAction.done,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.chat_outlined),
                   border: OutlineInputBorder(),
@@ -138,7 +146,6 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                   if (t1 != null) {
                     providerR!.selectedTime(t1);
                   }
-
                 },
                 label:
                     Text("${providerW!.time!.hour}:${providerW!.time!.minute}"),
@@ -161,7 +168,6 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
 
                       providerR!.addContact(data);
                       formkey.currentState!.reset();
-
                     }
                   },
                 ),
