@@ -174,7 +174,7 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
                 Row(
                   children: [
                     CupertinoButton(
-                      child: const Icon(CupertinoIcons.calendar),
+                      child: const Icon(CupertinoIcons.clock),
                       onPressed: () {
                         showCupertinoModalPopup(
                           context: context,

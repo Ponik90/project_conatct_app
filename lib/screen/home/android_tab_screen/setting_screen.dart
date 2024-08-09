@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:platform_change_contact/utils/global_provider.dart';
 import 'package:platform_change_contact/utils/shared_preference.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -23,9 +22,20 @@ class _SettingScreenState extends State<SettingScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+    context.read<GlobalProvider>().setUserName();
+    context.read<GlobalProvider>().selectedImage();
+    context.read<GlobalProvider>().setUserBio();
+    txtName.text = context.read<GlobalProvider>().userName;
+    txtBio.text = context.read<GlobalProvider>().userBio;
+  }
+
+  @override
   Widget build(BuildContext context) {
     providerW = context.watch<GlobalProvider>();
     providerR = context.read<GlobalProvider>();
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -53,10 +63,10 @@ class _SettingScreenState extends State<SettingScreen> {
                           ImagePicker picker = ImagePicker();
                           XFile? image = await picker.pickImage(
                               source: ImageSource.gallery);
-
-                          providerR!.selectedImage(image!.path);
+                          SharedHelper.helper.setUserImage(image!.path);
+                          providerR!.selectedImage();
                         },
-                        child: providerW!.image.isEmpty
+                        child: providerW!.image.isEmpty || providerW!.image == null
                             ? const CircleAvatar(
                                 radius: 60,
                                 child: Icon(
@@ -106,13 +116,11 @@ class _SettingScreenState extends State<SettingScreen> {
                           TextButton(
                             onPressed: () async {
                               if (formKey.currentState!.validate()) {
-                                SharedPreferences userList =
-                                    await SharedPreferences.getInstance();
-                                userList.setStringList('detail', [
-                                  providerW!.image,
-                                  providerW!.userName = txtName.text,
-                                  providerW!.userName = txtBio.text
-                                ]);
+                                SharedHelper.helper.setUserName(txtName.text);
+                                SharedHelper.helper.setUserBio(txtBio.text);
+
+                                providerR!.setUserName();
+                                providerR!.setUserBio();
                                 FocusManager.instance.primaryFocus!.unfocus();
                               }
                             },
@@ -144,8 +152,7 @@ class _SettingScreenState extends State<SettingScreen> {
             trailing: Switch(
               value: providerW!.isTheme,
               onChanged: (value) {
-                sheredTheme shr = sheredTheme();
-                shr.setTheme(value);
+                SharedHelper.helper.setTheme(value);
 
                 providerR!.selectedTheme();
               },
