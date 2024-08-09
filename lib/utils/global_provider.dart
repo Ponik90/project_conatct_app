@@ -11,20 +11,33 @@ class GlobalProvider with ChangeNotifier {
   String userBio = "";
 
   Future<void> setUserName() async {
-    userName = await SharedHelper.helper.getUserName();
-    print("=========+++++++++++++provider name==$userName");
+    if (await SharedHelper.helper.getUserName() != null) {
+      userName = (await SharedHelper.helper.getUserName())!;
+    } else {
+      userName = "";
+    }
+
     notifyListeners();
   }
 
   Future<void> setUserBio() async {
-    userBio = await SharedHelper.helper.getUserBio();
-    print("=========+++++++++++++provider bio==$userBio");
+    if (await SharedHelper.helper.getUserBio() != null) {
+      userBio = (await SharedHelper.helper.getUserBio())!;
+    } else {
+      userBio = "";
+    }
+
     notifyListeners();
   }
 
   Future<void> selectedImage() async {
-    image = await SharedHelper.helper.getUserImage();
-    print("=========+++++++++++++provider image==$image");
+    if (await SharedHelper.helper.getUserImage() != null) {
+      image = (await SharedHelper.helper.getUserImage())!;
+    } else {
+      image = "";
+    }
+
+
     notifyListeners();
   }
 
@@ -34,7 +47,12 @@ class GlobalProvider with ChangeNotifier {
   }
 
   void selectedTheme() async {
-    isTheme = await SharedHelper.helper.getTheme();
+    if (await SharedHelper.helper.getTheme() != null) {
+      isTheme = (await SharedHelper.helper.getTheme())!;
+    } else {
+      isTheme = true;
+    }
+
     notifyListeners();
   }
 

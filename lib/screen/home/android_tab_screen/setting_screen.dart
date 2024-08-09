@@ -66,7 +66,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           SharedHelper.helper.setUserImage(image!.path);
                           providerR!.selectedImage();
                         },
-                        child: providerW!.image.isEmpty || providerW!.image == null
+                        child: providerW!.image.isEmpty
                             ? const CircleAvatar(
                                 radius: 60,
                                 child: Icon(

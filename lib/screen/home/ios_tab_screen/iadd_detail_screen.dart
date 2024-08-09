@@ -153,15 +153,24 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
                         showCupertinoModalPopup(
                           context: context,
                           builder: (context) {
-                            return Container(
-                              height: 200,
-                              color: Colors.white,
-                              child: CupertinoDatePicker(
-                                mode: CupertinoDatePickerMode.date,
-                                onDateTimeChanged: (value) {
-                                  providerR!.selectedDate(value);
-                                },
-                              ),
+                            return Consumer<GlobalProvider>(
+                              builder: (context, value, child) {
+                                return Container(
+                                  height: 200,
+                                  color: value.isTheme == true
+                                      ? Colors.white
+                                      : Colors.black,
+                                  child: CupertinoDatePicker(
+                                    backgroundColor: value.isTheme == true
+                                        ? Colors.white
+                                        : Colors.black,
+                                    mode: CupertinoDatePickerMode.date,
+                                    onDateTimeChanged: (value) {
+                                      providerR!.selectedDate(value);
+                                    },
+                                  ),
+                                );
+                              },
                             );
                           },
                         );
@@ -179,15 +188,24 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
                         showCupertinoModalPopup(
                           context: context,
                           builder: (context) {
-                            return Container(
-                              height: 200,
-                              color: Colors.white,
-                              child: CupertinoDatePicker(
-                                mode: CupertinoDatePickerMode.time,
-                                onDateTimeChanged: (value) {
-                                  providerR!.selectedIosTime(value);
-                                },
-                              ),
+                            return Consumer<GlobalProvider>(
+                              builder: (context, value, child) {
+                                return Container(
+                                  height: 200,
+                                  color: value.isTheme == true
+                                      ? Colors.white
+                                      : Colors.black,
+                                  child: CupertinoDatePicker(
+                                    mode: CupertinoDatePickerMode.time,
+                                    onDateTimeChanged: (value) {
+                                      providerR!.selectedIosTime(value);
+                                    },
+                                    backgroundColor: value.isTheme == true
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                );
+                              },
                             );
                           },
                         );

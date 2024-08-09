@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
             bottom: const TabBar(
+              indicatorSize: TabBarIndicatorSize.tab,
               tabs: [
                 Tab(
                   icon: Icon(Icons.person_add_alt),
@@ -56,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           body: const TabBarView(
+
             children: [
               AddDetailScreen(),
               CallDetailScreen(),

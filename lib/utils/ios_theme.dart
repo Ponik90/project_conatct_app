@@ -18,9 +18,10 @@ CupertinoThemeData darkThemeIos =  const CupertinoThemeData(
     TextStyle(fontSize: 25, color: CupertinoColors.white),
     navTitleTextStyle: TextStyle(fontSize: 15, color: CupertinoColors.white),
   ),
+
   scaffoldBackgroundColor: CupertinoColors.black,
   brightness: Brightness.dark,
   barBackgroundColor: CupertinoColors.black,
   primaryColor: Color(0xff0e97e1),
-  applyThemeToAll: true
+
 );

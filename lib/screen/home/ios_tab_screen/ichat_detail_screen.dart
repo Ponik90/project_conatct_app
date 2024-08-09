@@ -42,30 +42,21 @@ class _IChatDetailScreenState extends State<IChatDetailScreen> {
           return CupertinoListTile(
             onTap: () {
               showCupertinoModalPopup(
+
                 context: context,
                 builder: (context) {
                   return CupertinoActionSheet(
+
                     title: Text("${providerW!.contactList[index].name}"),
                     message: Text("${providerW!.contactList[index].chat}"),
                     actions: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          CupertinoButton(
-                              child: const Icon(CupertinoIcons.pen),
-                              onPressed: () {
-                                showCupertinoModalPopup(context: context, builder:  (context) {
-                                  return Container();
-                                },);
-                              },),
-                          CupertinoButton(
-                            child: const Icon(CupertinoIcons.delete),
-                            onPressed: () {
-                              providerR!.deleteContact(index);
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
+
+                      CupertinoActionSheetAction(
+                        child: const Icon(CupertinoIcons.delete),
+                        onPressed: () {
+                          providerW!.deleteContact(index);
+                          Navigator.pop(context);
+                        },
                       ),
                     ],
                   );

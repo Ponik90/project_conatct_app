@@ -13,6 +13,7 @@ void main() {
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp],
   );
+
   runApp(
     MultiProvider(
       providers: [
@@ -26,6 +27,9 @@ void main() {
       child: Consumer<GlobalProvider>(
         builder: (context, value, child) {
           value.selectedTheme();
+          value.selectedImage();
+          value.setUserName();
+          value.setUserBio();
           return value.isAndroid
               ? MaterialApp(
                   theme: lightThemeMode,
@@ -38,7 +42,7 @@ void main() {
               : CupertinoApp(
                   routes: iosScreen,
                   debugShowCheckedModeBanner: false,
-                  theme:value.isTheme?lightThemeIos:darkThemeIos,
+                  theme: value.isTheme ? lightThemeIos : darkThemeIos,
                 );
         },
       ),

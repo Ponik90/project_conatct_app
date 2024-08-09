@@ -10,25 +10,25 @@ class SharedHelper {
     await shered.setBool('true', themeData);
   }
 
-  Future<bool> getTheme() async {
+  Future<bool?> getTheme() async {
     bool? data;
 
     SharedPreferences shered = await SharedPreferences.getInstance();
-    data = shered.getBool('true')!;
+    data = shered.getBool('true');
     return data;
   }
 
   Future<void> setUserName(String name) async {
-    print("=========+++++++++++++set==$name");
+
     SharedPreferences shr = await SharedPreferences.getInstance();
     await shr.setString('name', name);
   }
 
-  Future<String> getUserName() async {
+  Future<String?> getUserName() async {
     String? name;
     SharedPreferences shr = await SharedPreferences.getInstance();
-    name = shr.getString('name')!;
-    print("=========+++++++++++++get==$name");
+    name = shr.getString('name');
+
     return name;
   }
 
@@ -38,12 +38,12 @@ class SharedHelper {
     await shr.setString('bio', bio);
   }
 
-  Future<String> getUserBio() async {
+  Future<String?> getUserBio() async {
     String? bio;
 
     SharedPreferences shr = await SharedPreferences.getInstance();
 
-    bio = shr.getString('bio')!;
+    bio = shr.getString('bio');
     return bio;
   }
 
@@ -53,11 +53,11 @@ class SharedHelper {
     await shr.setString('image', image);
   }
 
-  Future<String> getUserImage() async {
+  Future<String?> getUserImage() async {
     String? image;
     SharedPreferences shr = await SharedPreferences.getInstance();
 
-    image = shr.getString('image')!;
+    image = shr.getString('image');
     return image;
   }
 }
