@@ -29,7 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
         length: 4,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text("Contact",style: TextStyle(fontSize: 18),),
+            title: const Text(
+              "Contact",
+              style: TextStyle(fontSize: 18),
+            ),
             actions: [
               Switch(
                 value: providerW!.isAndroid,
@@ -39,17 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
             bottom: const TabBar(
-
-
-
-
-
-
-
-
-
-
-
               indicatorSize: TabBarIndicatorSize.tab,
               tabs: [
                 Tab(
@@ -68,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           body: const TabBarView(
-
             children: [
               AddDetailScreen(),
               CallDetailScreen(),

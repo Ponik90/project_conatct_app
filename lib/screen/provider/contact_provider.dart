@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:platform_change_contact/screen/model/contact_modal.dart';
 
@@ -26,21 +24,24 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void selectedTime(TimeOfDay time )
-  {
+  void selectedTime(TimeOfDay time) {
     this.time = time;
     notifyListeners();
   }
 
-  void addContact(ContactModal data)
-  {
+  void addContact(ContactModal data) {
     contactList.add(data);
-    
+
     notifyListeners();
   }
 
-  void deleteContact(index)
-  {
+  void updateContact({int? index, String? name, String? phone, String? chat}) {
+    contactList[index!].phone = phone;
+    contactList[index].name = name;
+    contactList[index].chat = chat;
+  }
+
+  void deleteContact(index) {
     contactList.removeAt(index);
 
     notifyListeners();

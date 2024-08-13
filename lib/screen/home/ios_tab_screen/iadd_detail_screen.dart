@@ -232,7 +232,8 @@ class _IAddDetailScreenState extends State<IAddDetailScreen> {
                             date: providerW!.date,
                             iosTime: providerW!.iosTime);
 
-                        providerR?.addContact(data);
+                        providerR!.addContact(data);
+                        formkey.currentState!.reset();
                       }
                     },
                   ),

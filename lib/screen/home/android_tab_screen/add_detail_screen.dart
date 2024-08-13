@@ -126,7 +126,7 @@ class _AddDetailScreenState extends State<AddDetailScreen> {
                   DateTime? d1 = await showDatePicker(
                     context: context,
                     firstDate: DateTime(2000),
-                    lastDate: DateTime(2050),
+                    lastDate: DateTime(3050),
                   );
                   if (d1 != null) {
                     providerR!.selectedDate(d1);
